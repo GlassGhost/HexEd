@@ -1,0 +1,42 @@
+File:
+	Ctrl+N : New Document
+	Ctrl+O : Open
+	Ctrl+W : Close
+	Shift+Ctrl+W : Close All
+	Ctrl+S : Save
+	Shift+Ctrl+S : Save As
+	Shift+Ctrl+L : Save All
+
+	Ctrl+P : Print
+	Ctrl+Q : Quit
+
+Edit:
+	Ctrl+Z : Undo
+	Ctrl+Y : Redo
+
+	Ctrl+X : Cut
+	Ctrl+C : Copy
+	Ctrl+V : Paste
+	Ctrl+D : Delete
+
+	Ctrl+A : Select All
+
+	Ctrl+F : Find & Replace
+
+View:
+	F11 : Full Screen
+
+Insert:
+	Ctrl+4 : Insert Formula(Shift+4 = $ the symbol used in latex)
+	Ctrl+/ : Insert tex Character
+
+Format:
+	Ctrl+B : Bold text
+	Ctrl+I : Italicize text
+	Ctrl+U : Underline text
+
+Tools:
+
+Help:
+	Ctrl+? : Help (? signifies a question or confusion)
+	Ctrl+. : User Interrupt

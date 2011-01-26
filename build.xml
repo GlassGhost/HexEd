@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--*******************************License(s)***********************************
+Copyright © 2010 Roy Pfund.                                 All rights reserved.
+Use of this source code is governed by a  BSD-style License(the "License")  that
+can be found in the LICENSE file. You should have received a copy of the License
+along with this distribution.  If not,  You may obtain a copy of the License  at
+    http://github.com/GlassGhost/Glas-Test-Area/raw/master/LICENSE.txt
+******************************PROGRAM DESCRIPTION*******************************
+"ant" build file for Java Jar program executable by: Roy Pfund               -->
+
+<project name="TextEditor" default="Package" basedir=".">
+<!-- variables -->
+	<property name="ProjectName" value="TextEditor"/>
+	<property name="src" value="./src"/>
+	<property name="lib" value="./lib"/>
+	<property name="build" value="./build"/>
+	<property name="compile.debug" value="true"/>
+<!-- Class-Path -->
+	<path id="compile.classpath">
+		<pathelement location="${mysql.jdbc}"/>
+		<pathelement location="${junit.jar}"/>
+	<fileset dir="${lib}">
+		<include name="*.jar"/>
+	</fileset>
+	</path>
+
+<target name="Compile" description="Compile all Java source files into class files in build dir">
+	<mkdir dir="${build}"/><!-- "mkdir" will only make the directory if it does not already exist.-->
+	<javac srcdir="${src}" destdir="${build}" debug="${compile.debug}" source="1.5">
+		 <classpath refid="compile.classpath"/>
+	</javac>
+</target>
+
+<target name="Package" depends="Compile" description="builds the jar file an makes the manifest file" >
+	<jar destfile="./${ProjectName}.jar" basedir="${build}">
+		<zipgroupfileset dir="./lib" includes="*.jar"/>
+		<manifest>
+			<attribute name="Main-Class" value="${ProjectName}.${ProjectName}UI"/>
+			<attribute name="Class-Path" value="./lib/*.jar"/>
+		</manifest>
+	</jar>
+</target>
+
+<!-- clean gets rid of all the extra files created by the build process, so you can save storage safely. Sometimes you'll want to do a completely fresh build, like when changing versions of the JDK. -->
+<target name="Clean" description="Removes previous build">
+	<delete verbose="true">
+		<fileset dir="${build}"/>
+	</delete>
+</target>
+</project>
