@@ -1,11 +1,12 @@
 File:
 	Ctrl+N : New Document
 	Ctrl+O : Open
-	Ctrl+W : Close
-	Shift+Ctrl+W : Close All
 	Ctrl+S : Save
 	Shift+Ctrl+S : Save As
 	Shift+Ctrl+L : Save All
+
+	Ctrl+W : Close
+	Shift+Ctrl+W : Close All
 
 	Ctrl+P : Print
 	Ctrl+Q : Quit
