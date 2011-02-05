@@ -40,7 +40,11 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 		JMenuItem newJMenuItem = new JMenuItem("New"),
 		openJMenuItem = new JMenuItem("Open"),
 		saveJMenuItem = new JMenuItem("Save"),
-		saveasJMenuItem = new JMenuItem("Save As"),
+		saveasJMenuItem = new JMenuItem("Save As . . ."),
+		saveallJMenuItem = new JMenuItem("Save All"),
+		closeJMenuItem = new JMenuItem("Close"),
+		closeallJMenuItem = new JMenuItem("Close All"),
+		printJMenuItem = new JMenuItem("Print"),
 		quitJMenuItem = new JMenuItem("Quit");
 	JMenu editJMenu = new JMenu("Edit");
 		JMenuItem undoJMenuItem = new JMenuItem("Undo"),
@@ -52,8 +56,12 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 		selectJMenuItem = new JMenuItem("Select-All"),
 		findAnReplaceJMenuItem = new JMenuItem("Find & Replace");
 	JMenu viewJMenu = new JMenu("View");
+		JMenuItem fullscrnJMenuItem = new JMenuItem("Full Screen");
 		JCheckBoxMenuItem TextWrapCheckBox = new JCheckBoxMenuItem("Word-Wrap", true);
+	JMenu sourceJMenu = new JMenu("Source");
+		JMenuItem antJMenuItem = new JMenuItem("Run Apache Ant");
 	JMenu helpJMenu = new JMenu("Help");
+		JMenuItem contentsJMenuItem = new JMenuItem("Contents");
 		JMenuItem aboutJMenuItem = new JMenuItem("About");
 
 public TextEditorUI() {
@@ -65,36 +73,93 @@ public TextEditorUI() {
 	this.add(mainJScrollPane);
 	this.setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
-			addmenuitemtomenu(fileJMenu, newJMenuItem);
-			addmenuitemtomenu(fileJMenu, openJMenuItem);
-			addmenuitemtomenu(fileJMenu, saveJMenuItem);
-			addmenuitemtomenu(fileJMenu, saveasJMenuItem);
+			addmenuitemtomenu(fileJMenu, newJMenuItem, "ctrl N");
+			addmenuitemtomenu(fileJMenu, openJMenuItem, "ctrl O");
+			addmenuitemtomenu(fileJMenu, saveJMenuItem, "ctrl S");
+			addmenuitemtomenu(fileJMenu, saveasJMenuItem, "ctrl shift S");
+			addmenuitemtomenu(fileJMenu, saveallJMenuItem, "ctrl shift L");
+			addmenuitemtomenu(fileJMenu, closeJMenuItem, "ctrl W");
+			addmenuitemtomenu(fileJMenu, closeallJMenuItem, "ctrl shift W");
 				fileJMenu.addSeparator();
-			addmenuitemtomenu(fileJMenu, quitJMenuItem);
+			addmenuitemtomenu(fileJMenu, printJMenuItem, "ctrl P");
+			addmenuitemtomenu(fileJMenu, quitJMenuItem, "ctrl Q");
 		TEUIJMenuBar.add(editJMenu);
-			addmenuitemtomenu(editJMenu, undoJMenuItem);
-			addmenuitemtomenu(editJMenu, redoJMenuItem);
+			addmenuitemtomenu(editJMenu, undoJMenuItem, "ctrl Z");
+			addmenuitemtomenu(editJMenu, redoJMenuItem, "ctrl Y");
 				editJMenu.addSeparator();
-			addmenuitemtomenu(editJMenu, cutJMenuItem);
-			addmenuitemtomenu(editJMenu, copyJMenuItem);
-			addmenuitemtomenu(editJMenu, pasteJMenuItem);
-			addmenuitemtomenu(editJMenu, deleteJMenuItem);
+			addmenuitemtomenu(editJMenu, cutJMenuItem, "ctrl X");
+			addmenuitemtomenu(editJMenu, copyJMenuItem, "ctrl C");
+			addmenuitemtomenu(editJMenu, pasteJMenuItem, "ctrl V");
+			addmenuitemtomenu(editJMenu, deleteJMenuItem, "ctrl D");
 				editJMenu.addSeparator();
-			addmenuitemtomenu(editJMenu, selectJMenuItem);
-			addmenuitemtomenu(editJMenu, findAnReplaceJMenuItem);
+			addmenuitemtomenu(editJMenu, selectJMenuItem, "ctrl A");
+			addmenuitemtomenu(editJMenu, findAnReplaceJMenuItem, "ctrl F");
 		TEUIJMenuBar.add(viewJMenu);
 			viewJMenu.add(TextWrapCheckBox);
 			TextWrapCheckBox.addChangeListener(this);
+			addmenuitemtomenu(viewJMenu, fullscrnJMenuItem, "F11");
 			//TextWrapCheckBox.addpropertychangedlistener(this);
+		TEUIJMenuBar.add(sourceJMenu);
+			addmenuitemtomenu(sourceJMenu, antJMenuItem, "F5");
 		TEUIJMenuBar.add(helpJMenu);
+			addmenuitemtomenu(helpJMenu, contentsJMenuItem, "F1");
+				editJMenu.addSeparator();
 			addmenuitemtomenu(helpJMenu, aboutJMenuItem);
 }
 /********************************Event Handling********************************/
-public void actionPerformed( ActionEvent event ){
-//	String eventstr = event.getActionCommand();
-//	if ( eventstr.equals("New") ){
-//		//tabbedPane.add("Untitled", makeTextPanel() );
-//	}
+public void actionPerformed( ActionEvent evt ){
+	if (evt.getSource() == newJMenuItem) {
+	}
+	else if (evt.getSource() == openJMenuItem) {
+		FileDialog("Open");
+	}
+	else if (evt.getSource() == saveJMenuItem) {
+		FileDialog("Save");
+	}
+	else if (evt.getSource() == saveasJMenuItem) {
+		FileDialog("Save As");
+	}
+	else if (evt.getSource() == saveallJMenuItem) {
+	}
+	else if (evt.getSource() == closeJMenuItem) {
+	}
+	else if (evt.getSource() == closeallJMenuItem) {
+	}
+	else if (evt.getSource() == printJMenuItem) {
+	}
+	else if (evt.getSource() == quitJMenuItem) {
+		System.exit(0);
+	}
+
+	else if (evt.getSource() == undoJMenuItem) {
+	}
+	else if (evt.getSource() == redoJMenuItem) {
+	}
+	else if (evt.getSource() == cutJMenuItem) {
+	}
+	else if (evt.getSource() == copyJMenuItem) {
+	}
+	else if (evt.getSource() == pasteJMenuItem) {
+	}
+	else if (evt.getSource() == deleteJMenuItem) {
+	}
+	else if (evt.getSource() == selectJMenuItem) {
+	}
+	else if (evt.getSource() == findAnReplaceJMenuItem) {
+	}
+
+	else if (evt.getSource() == TextWrapCheckBox) {
+	}
+	else if (evt.getSource() == fullscrnJMenuItem) {
+	}
+
+	else if (evt.getSource() == antJMenuItem) {
+	}
+
+	else if (evt.getSource() == contentsJMenuItem) {
+	}
+	else if (evt.getSource() == aboutJMenuItem) {
+	}
 }
 public void stateChanged(javax.swing.event.ChangeEvent evt) {
 	if (evt.getSource() == TextWrapCheckBox) {
@@ -114,41 +179,7 @@ public void mouseExited(java.awt.event.MouseEvent evt) {
 public void mousePressed(java.awt.event.MouseEvent evt) {
 }
 public void mouseReleased(java.awt.event.MouseEvent evt) {
-	if (evt.getSource() == newJMenuItem) {
-		//FileDialog("Open");
-	}
-	else if (evt.getSource() == openJMenuItem) {
-		FileDialog("Open");
-	}
-	else if (evt.getSource() == saveJMenuItem) {
-		//FileDialog("Save");
-	}
-	else if (evt.getSource() == saveJMenuItem) {
-		FileDialog("Save As");
-	}
-	else if (evt.getSource() == quitJMenuItem) {
-		System.exit(0);
-	}
-	else if (evt.getSource() == TextWrapCheckBox) {
-	
-	}
-	else if (evt.getSource() == undoJMenuItem) {
-	
-	}
-	else if (evt.getSource() == cutJMenuItem) {
-	
-	}
-	else if (evt.getSource() == copyJMenuItem) {
-	
-	}
-	else if (evt.getSource() == pasteJMenuItem) {
-	
-	}
-	else if (evt.getSource() == aboutJMenuItem) {
-	
-	}
 }
-
 /**********************************Functions***********************************/
 private void FileDialog(String filedialogtypeSTR) {
 //filedialog switch for desired filedialog
@@ -169,6 +200,16 @@ private void FileDialog(String filedialogtypeSTR) {
 			}
 		}
 
+		else if (filedialogtypeSTR.contentEquals("Save")){// user picked save file
+			try {
+				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
+				out.print (mainJTextPane.getText());
+				out.close();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, "Could not save the file " + e.getMessage());
+			}
+		}
+
 		else if (filedialogtypeSTR.contentEquals("Save As")){// user picked save file
 			try {
 				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
@@ -179,18 +220,19 @@ private void FileDialog(String filedialogtypeSTR) {
 			}
 		}
 	}
-}
+}//_____________________________________________________________________________
 
 private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance){
 	parentmenu.add(MenuItemInstance);
-	MenuItemInstance.addMouseListener(this);
-}
-private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, KeyStroke keymnemonic){
+//	MenuItemInstance.addMouseListener(this);
+	MenuItemInstance.addActionListener(this);
+}//_____________________________________________________________________________
+private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, String keymnemonic){
 	parentmenu.add(MenuItemInstance);
-	MenuItemInstance.addMouseListener(this);
-//	MenuItemInstance.addActionListener(this);
-	MenuItemInstance.setAccelerator(keymnemonic);
-}
+//	MenuItemInstance.addMouseListener(this);
+	MenuItemInstance.addActionListener(this);
+	MenuItemInstance.setAccelerator(KeyStroke.getKeyStroke(keymnemonic));
+}//_____________________________________________________________________________
 
 public static void main(String args[]) {
 	try {//Set native look and feel
