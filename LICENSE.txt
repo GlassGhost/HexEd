@@ -8,9 +8,9 @@ are permitted provided that the following conditions are met:
 2. Redistributions in binary form must reproduce  the  above  copyright  notice,
    this list of conditions and the following  disclaimer  in  the  documentation
    and/or other materials provided with the distribution.
-3. All advertising materials mentioning features  or  use of this software  must
-   display the following acknowledgement:
-This product includes software  developed by  its contributor(s) and  Roy Pfund.
+3. A̶l̶l̶ ̶a̶d̶v̶e̶r̶t̶i̶s̶i̶n̶g̶ ̶m̶a̶t̶e̶r̶i̶a̶l̶s̶ ̶m̶e̶n̶t̶i̶o̶n̶i̶n̶g̶ ̶f̶e̶a̶t̶u̶r̶e̶s̶ ̶ ̶o̶r̶ ̶ ̶u̶s̶e̶ ̶o̶f̶ ̶t̶h̶i̶s̶ ̶s̶o̶f̶t̶w̶a̶r̶e̶ ̶ ̶m̶u̶s̶t̶
+   d̶i̶s̶p̶l̶a̶y̶ ̶t̶h̶e̶ ̶f̶o̶l̶l̶o̶w̶i̶n̶g̶ ̶a̶c̶k̶n̶o̶w̶l̶e̶d̶g̶e̶m̶e̶n̶t̶:
+T̶h̶i̶s̶ ̶p̶r̶o̶d̶u̶c̶t̶ ̶i̶n̶c̶l̶u̶d̶e̶s̶ ̶s̶o̶f̶t̶w̶a̶r̶e̶ ̶ ̶d̶e̶v̶e̶l̶o̶p̶e̶d̶ ̶b̶y̶ ̶ ̶i̶t̶s̶ ̶c̶o̶n̶t̶r̶i̶b̶u̶t̶o̶r̶(̶s̶)̶ ̶a̶n̶d̶ ̶ ̶R̶o̶y̶ ̶P̶f̶u̶n̶d̶.̶
 4. Neither the name of the Copyright Holder(s) nor the names of its contributors
    may be used to endorse or promote products derived from this software without
    specific prior written permission.
@@ -24,7 +24,7 @@ DAMAGES (INCLUDING, BUT NOT LIMITED  TO,  PROCUREMENT  OF  SUBSTITUTE  GOODS  OR
 SERVICES;  LOSS OF USE,  DATA,  OR PROFITS;  OR  BUSINESS INTERRUPTION)  HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
 TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  ARISING IN  ANY  WAY OUT OF THE USE OF
-THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. --4 Clause BSD
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. --3 Clause BSD
 
 The views and conclusions contained in the software and documentation are  those
 of the authors and should not be interpreted as representing official  policies,

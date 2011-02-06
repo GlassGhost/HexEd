@@ -33,6 +33,7 @@ implements ActionListener,
 		javax.swing.event.ChangeListener,
 		java.awt.event.MouseListener {
 JFileChooser chooser = new JFileChooser();
+String CFO = "";//current file opened
 JTextPane mainJTextPane = new JTextPane();
 JScrollPane mainJScrollPane = new JScrollPane(mainJTextPane);
 JMenuBar TEUIJMenuBar = new JMenuBar();
@@ -71,6 +72,7 @@ public TextEditorUI() {
 	this.setVisible(true);
 //		noWrapPanel.add( mainJTextPane );
 	this.add(mainJScrollPane);
+	mainJTextPane.setFont(new java.awt.Font("FreeMono", 1, 12));
 	this.setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
 			addmenuitemtomenu(fileJMenu, newJMenuItem, "ctrl N");
@@ -109,15 +111,16 @@ public TextEditorUI() {
 /********************************Event Handling********************************/
 public void actionPerformed( ActionEvent evt ){
 	if (evt.getSource() == newJMenuItem) {
+		File("New");
 	}
 	else if (evt.getSource() == openJMenuItem) {
-		FileDialog("Open");
+		File("Open");
 	}
 	else if (evt.getSource() == saveJMenuItem) {
-		FileDialog("Save");
+		File("Save");
 	}
 	else if (evt.getSource() == saveasJMenuItem) {
-		FileDialog("Save As");
+		File("Save As");
 	}
 	else if (evt.getSource() == saveallJMenuItem) {
 	}
@@ -181,7 +184,7 @@ public void mousePressed(java.awt.event.MouseEvent evt) {
 public void mouseReleased(java.awt.event.MouseEvent evt) {
 }
 /**********************************Functions***********************************/
-private void FileDialog(String filedialogtypeSTR) {
+private void File(String filedialogtypeSTR) {
 //filedialog switch for desired filedialog
 	if (chooser.showDialog(null, filedialogtypeSTR) == JFileChooser.APPROVE_OPTION) {
 	File chosenFile = chooser.getSelectedFile();
