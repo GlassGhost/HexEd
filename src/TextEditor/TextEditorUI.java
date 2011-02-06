@@ -210,7 +210,7 @@ private void FileDialog(String filedialogtypeSTR) {
 			}
 		}
 
-		else if (filedialogtypeSTR.contentEquals("Save As")){// user picked save file
+		else if (filedialogtypeSTR.contentEquals("Save As")){
 			try {
 				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
 				out.print (mainJTextPane.getText());

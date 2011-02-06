@@ -20,7 +20,7 @@
 Ⅼ/L, Ⅽ/rC, Ⅾ/D, Ⅿ/M,
 ⅰ/i, ⅱ/ii, ⅲ/iii, ⅳ/iv, ⅴ/v, ⅵ/vi, ⅶ/vii, ⅷ/viii, ⅸ/ix, ⅹ/x, ⅺ/xi, ⅻ/xii,
 ⅼ/l, ⅽ/rc, ⅾ/d, ⅿ/m,
-⅛/1eighth, ¼/1quarter, ⅜/3eighths, ½/1half, ⅝/5eighths ¾/3/quarters, ⅞/7eighths,
+⅛/1eighth, ¼/1quarter, ⅜/3eighths, ½/1half, ⅝/5eighths ¾/3quarters, ⅞/7eighths,
 
 ♠/spade, ♣/club, ♥/heart, ♦/diamond, ★/bstar, ⚡/bolt,
 ♚/bking, ♛/bqueen, ♝/bbishop, ♞/wknight, ♜/brook, ♟/bpawn,

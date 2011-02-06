@@ -1,0 +1,56 @@
+A generic Text Editor written by Roy Pfund for educational purposes.
+Makes use of the sacred keyboard mnemonics or hotkeys.
+***********************************License(s)***********************************
+Copyright © 2010, 2011 Roy Pfund.                           All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright  notice,  this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce  the  above  copyright  notice,
+   this list of conditions and the following  disclaimer  in  the  documentation
+   and/or other materials provided with the distribution.
+3. All advertising materials mentioning features  or  use of this software  must
+   display the following acknowledgement:
+This product includes software  developed by  its contributor(s) and  Roy Pfund.
+4. Neither the name of the Copyright Holder(s) nor the names of its contributors
+   may be used to endorse or promote products derived from this software without
+   specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S)  AND  CONTRIBUTORS  "AS IS"
+AND  ANY  EXPRESS OR IMPLIED  WARRANTIES,  INCLUDING,  BUT NOT  LIMITED TO,  THE
+IMPLIED WARRANTIES OF MERCHANTABILITY  AND  FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER(S) OR CONTRIBUTORS  BE LIABLE
+FOR ANY DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR  CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED  TO,  PROCUREMENT  OF  SUBSTITUTE  GOODS  OR
+SERVICES;  LOSS OF USE,  DATA,  OR PROFITS;  OR  BUSINESS INTERRUPTION)  HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  ARISING IN  ANY  WAY OUT OF THE USE OF
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. --4 Clause BSD
+
+The views and conclusions contained in the software and documentation are  those
+of the authors and should not be interpreted as representing official  policies,
+either expressed or implied, of Roy Pfund.
+    END OF TERMS AND CONDITIONS
+*********************************Contributor(s)*********************************
+GlassGhost - Roy Brian Allen Pfund 1987-May-8 Christus Saint John Hospital 77058
+*******************************Boilerplate Notice*******************************
+Copyright © 2010, 2011 Roy Pfund.                           All rights reserved.
+Use of this source code is governed by a  BSD-style License(the "License")  that
+can be found in the LICENSE file. You should have received a copy of the License
+along with this distribution.  If not,  You may obtain a copy of the License  at
+    https://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
+***********************************Appendices***********************************
+  APPENDIX A: Miscellaneous info
+    This BSD-style license, is reworded then  computer  justified  and  manually
+    tweaked by Roy Pfund from the original revision. The original revision  made
+    in 1994 shortly after the 1992 USL v. BSDi lawsuit, can be found at:
+http://www.freebsd.org/cgi/cvsweb.cgi/~checkout~/src/COPYRIGHT?rev=1.1;content-type=text%2Fplain
+    The Boilerplate notice is a combination of the Chromium(C),  Apache(C),  and
+    GNU(C) GPL boilerplates. Chromium(C), Apache(C), and GNU(C)  are  of  course
+    copyright their respective copyright owners.
+
+  APPENDIX B: How to make the different BSD licenses
+    The original 4-Clause  BSD  license  gives  the  3-clause  or  2-clause  BSD
+    Licenses,  by  removing  the  3rd  clause  or  the  3rd  and   4th   clauses
+    respectively.
