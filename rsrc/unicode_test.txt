@@ -5,7 +5,7 @@
 ∈/e, ∉/!e, ∌/!3, ∋/3, ∅/!O, ∃/E, ∄/!E, ∀/A, ∴/thfo, ∵/beca, ∁/complement,
 ±/+-, ∓/-+, ×/x, ÷/%, ∞/infty, ℕ/natural, ℤ/int, ℚ/rational, ℝ/real, ℂ/complex,
 ∂/partial, ∇/nabla, ∑/sum, ∏/product, ⋅/., ⋆/star, ∗/*, ⊤/true, ⊥/false,
-⋯/cdots, …/ldots, ⋮/vdots, ⋱/ddots, ⋰, ∝/proportion,
+⋯/cdots, …/ldots, ⋮/vdots, ⋱/ddots, ⋰/rddots, ∝/proportion,
 
 §/S, ¶/P, №/#, †/dag, ‡/ddag, °/degree, ⟳/cw, ⟲/ccw, ¢/cent,
 £/pound, €/euro, ¥/yen, ©/copyright, ®/registered, ℗/phonorecord, ™/tm, ℠/sm,
@@ -31,9 +31,10 @@
 └/llcorner, ┴/lmcorner, ┘/lrcorner, ╰/llcurve, ╯lrcurve,
 ↖/^\, ↑/^|, ↗/^/,
 ←/<-, ↔/<->, →/->, ↕/^|v,
-↙/v/, ↓/v|, ↘/\v,
+↙/v/, ↓/v|, ↘/v\,
 ↚/!<-, ↮/!<->, ↛/!->,
+
 ⇖/^\\, ⇑/^||, ⇗/^//,
 ⇐/<--, ⇔/<-->, ⇒/-->, ⇕/^||v,
-⇙/v//, ⇓/v||, ⇘/\\v,
+⇙/v//, ⇓/v||, ⇘/v\\,
 ⇍/!<--, ⇎/!<-->, ⇏/!-->,

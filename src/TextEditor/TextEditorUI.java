@@ -3,7 +3,7 @@ Copyright © 2009, 2010, 2011 Roy Pfund.                     All rights reserved
 Use of this source code is governed by a  BSD-style License(the "License")  that
 can be found in the LICENSE file. You should have received a copy of the License
 along with this distribution.  If not,  You may obtain a copy of the License  at
-    http://github.com/GlassGhost/Glas-Test-Area/raw/master/LICENSE.txt
+    http://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
 *************************************Inputs*************************************
 none
 *********************************Pre-Conditions*********************************
@@ -27,13 +27,16 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.regex.*;
 import java.lang.*;
+import java.net.*;
+import org.apache.tools.*;
+//import org.apache.tools.ant.Main.*;
 /*********************************GUI Creation*********************************/
 public class TextEditorUI extends JFrame
 implements ActionListener,
 		javax.swing.event.ChangeListener,
 		java.awt.event.MouseListener {
 JFileChooser chooser = new JFileChooser();
-String CFO = "";//current file opened
+String CFO = "";//Current File Opened
 JTextPane mainJTextPane = new JTextPane();
 JScrollPane mainJScrollPane = new JScrollPane(mainJTextPane);
 JMenuBar TEUIJMenuBar = new JMenuBar();
@@ -65,14 +68,16 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 		JMenuItem contentsJMenuItem = new JMenuItem("Contents");
 		JMenuItem aboutJMenuItem = new JMenuItem("About");
 
-public TextEditorUI() {
+org.apache.tools.ant.Main ANTPILE = new org.apache.tools.ant.Main();
+
+public TextEditorUI(){
 	this.setTitle("Text Editor");
 	this.setSize(640, 450);
 	this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	this.setVisible(true);
 //		noWrapPanel.add( mainJTextPane );
 	this.add(mainJScrollPane);
-	mainJTextPane.setFont(new java.awt.Font("FreeMono", 1, 12));
+	mainJTextPane.setFont(new java.awt.Font("Nimbus Mono L", 1, 12));
 	this.setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
 			addmenuitemtomenu(fileJMenu, newJMenuItem, "ctrl N");
@@ -110,62 +115,64 @@ public TextEditorUI() {
 }
 /********************************Event Handling********************************/
 public void actionPerformed( ActionEvent evt ){
-	if (evt.getSource() == newJMenuItem) {
+	if (evt.getSource() == newJMenuItem){
 		File("New");
 	}
-	else if (evt.getSource() == openJMenuItem) {
+	else if (evt.getSource() == openJMenuItem){
 		File("Open");
 	}
-	else if (evt.getSource() == saveJMenuItem) {
+	else if (evt.getSource() == saveJMenuItem){
 		File("Save");
 	}
-	else if (evt.getSource() == saveasJMenuItem) {
+	else if (evt.getSource() == saveasJMenuItem){
 		File("Save As");
 	}
-	else if (evt.getSource() == saveallJMenuItem) {
+	else if (evt.getSource() == saveallJMenuItem){
 	}
-	else if (evt.getSource() == closeJMenuItem) {
+	else if (evt.getSource() == closeJMenuItem){
 	}
-	else if (evt.getSource() == closeallJMenuItem) {
+	else if (evt.getSource() == closeallJMenuItem){
 	}
-	else if (evt.getSource() == printJMenuItem) {
+	else if (evt.getSource() == printJMenuItem){
 	}
-	else if (evt.getSource() == quitJMenuItem) {
+	else if (evt.getSource() == quitJMenuItem){
 		System.exit(0);
 	}
 
-	else if (evt.getSource() == undoJMenuItem) {
+	else if (evt.getSource() == undoJMenuItem){
 	}
-	else if (evt.getSource() == redoJMenuItem) {
+	else if (evt.getSource() == redoJMenuItem){
 	}
-	else if (evt.getSource() == cutJMenuItem) {
+	else if (evt.getSource() == cutJMenuItem){
 	}
-	else if (evt.getSource() == copyJMenuItem) {
+	else if (evt.getSource() == copyJMenuItem){
 	}
-	else if (evt.getSource() == pasteJMenuItem) {
+	else if (evt.getSource() == pasteJMenuItem){
 	}
-	else if (evt.getSource() == deleteJMenuItem) {
+	else if (evt.getSource() == deleteJMenuItem){
 	}
-	else if (evt.getSource() == selectJMenuItem) {
+	else if (evt.getSource() == selectJMenuItem){
 	}
-	else if (evt.getSource() == findAnReplaceJMenuItem) {
-	}
-
-	else if (evt.getSource() == TextWrapCheckBox) {
-	}
-	else if (evt.getSource() == fullscrnJMenuItem) {
+	else if (evt.getSource() == findAnReplaceJMenuItem){
 	}
 
-	else if (evt.getSource() == antJMenuItem) {
+	else if (evt.getSource() == TextWrapCheckBox){
+	}
+	else if (evt.getSource() == fullscrnJMenuItem){
 	}
 
-	else if (evt.getSource() == contentsJMenuItem) {
+	else if (evt.getSource() == antJMenuItem){
+		JOptionPane.showMessageDialog(null, ANTPILE.getAntVersion());
+		//delete ANTPILE; + org.apache.tools.ant.Main.getAntVersion()
 	}
-	else if (evt.getSource() == aboutJMenuItem) {
+
+	else if (evt.getSource() == contentsJMenuItem){
+	}
+	else if (evt.getSource() == aboutJMenuItem){
 	}
 }
-public void stateChanged(javax.swing.event.ChangeEvent evt) {
-	if (evt.getSource() == TextWrapCheckBox) {
+public void stateChanged(javax.swing.event.ChangeEvent evt){
+	if (evt.getSource() == TextWrapCheckBox){
 		if (TextWrapCheckBox.getState() == true){
 			
 		} else { //state is false
@@ -173,32 +180,36 @@ public void stateChanged(javax.swing.event.ChangeEvent evt) {
 		}
 	}
 }
-public void mouseClicked(java.awt.event.MouseEvent evt) {
+public void mouseClicked(java.awt.event.MouseEvent evt){
 }
-public void mouseEntered(java.awt.event.MouseEvent evt) {
+public void mouseEntered(java.awt.event.MouseEvent evt){
 }
-public void mouseExited(java.awt.event.MouseEvent evt) {
+public void mouseExited(java.awt.event.MouseEvent evt){
 }
-public void mousePressed(java.awt.event.MouseEvent evt) {
+public void mousePressed(java.awt.event.MouseEvent evt){
 }
-public void mouseReleased(java.awt.event.MouseEvent evt) {
+public void mouseReleased(java.awt.event.MouseEvent evt){
 }
 /**********************************Functions***********************************/
-private void File(String filedialogtypeSTR) {
+private void File(String filedialogtypeSTR){
 //filedialog switch for desired filedialog
-	if (chooser.showDialog(null, filedialogtypeSTR) == JFileChooser.APPROVE_OPTION) {
+	if (filedialogtypeSTR.contentEquals("New")){
+		CFO = "";mainJTextPane.setText("");
+	}
+	else if (chooser.showDialog(null, filedialogtypeSTR) == JFileChooser.APPROVE_OPTION){
 	File chosenFile = chooser.getSelectedFile();
+	CFO = chosenFile.toString();
 		if (filedialogtypeSTR.contentEquals("Open")){//user picked open file
 			try {
 				BufferedReader in = new BufferedReader (new FileReader(chosenFile));
 				mainJTextPane.setText("");
 				String nextLine = in.readLine();
-				while (nextLine != null) {
+				while (nextLine != null){
 					mainJTextPane.setText(mainJTextPane.getText() + nextLine + "\n");
 					nextLine = in.readLine();
 			}
 			in.close();
-			} catch (IOException e) {
+			} catch (IOException e){
 			JOptionPane.showMessageDialog(null, "Could not load the file " + e.getMessage());
 			}
 		}
@@ -208,7 +219,7 @@ private void File(String filedialogtypeSTR) {
 				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
 				out.print (mainJTextPane.getText());
 				out.close();
-			} catch (IOException e) {
+			} catch (IOException e){
 				JOptionPane.showMessageDialog(null, "Could not save the file " + e.getMessage());
 			}
 		}
@@ -218,11 +229,12 @@ private void File(String filedialogtypeSTR) {
 				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
 				out.print (mainJTextPane.getText());
 				out.close();
-			} catch (IOException e) {
+			} catch (IOException e){
 				JOptionPane.showMessageDialog(null, "Could not save the file " + e.getMessage());
 			}
 		}
 	}
+	this.setTitle(CFO);
 }//_____________________________________________________________________________
 
 private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance){
@@ -237,13 +249,13 @@ private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, Str
 	MenuItemInstance.setAccelerator(KeyStroke.getKeyStroke(keymnemonic));
 }//_____________________________________________________________________________
 
-public static void main(String args[]) {
+public static void main(String args[]){
 	try {//Set native look and feel
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	} catch (InstantiationException e) {
-	} catch (ClassNotFoundException e) {
-	} catch (UnsupportedLookAndFeelException e) {
-	} catch (IllegalAccessException e) {
+	} catch (InstantiationException e){
+	} catch (ClassNotFoundException e){
+	} catch (UnsupportedLookAndFeelException e){
+	} catch (IllegalAccessException e){
 	}//__________________________________
 	new TextEditorUI();
 }}//___________________________________________________________end TextEditor UI

@@ -4,7 +4,7 @@ Copyright © 2010, 2011 Roy Pfund.                           All rights reserved
 Use of this source code is governed by a  BSD-style License(the "License")  that
 can be found in the LICENSE file. You should have received a copy of the License
 along with this distribution.  If not,  You may obtain a copy of the License  at
-    http://github.com/GlassGhost/Glas-Test-Area/raw/master/LICENSE.txt
+    http://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
 ******************************PROGRAM DESCRIPTION*******************************
 "ant" build file for distributable Java Jar executable  by: Roy Pfund        -->
 
@@ -21,9 +21,7 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 	<path id="compile.classpath">
 		<pathelement location="${mysql.jdbc}"/>
 		<pathelement location="${junit.jar}"/>
-	<fileset dir="${lib}">
-		<include name="*.jar"/>
-	</fileset>
+		<fileset dir="${lib}" includes="*.jar"/>
 	</path>
 
 <target name="Compile"
@@ -32,6 +30,7 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 	<javac srcdir="${src}"
            destdir="${build}"
            debug="${compile.debug}"
+           includeantruntime="false"
            source="1.5">
 		<classpath refid="compile.classpath"/>
 	</javac>
@@ -43,7 +42,9 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 	<jar destfile="${cwd}/${ProjectName}.jar" basedir="${build}">
 <!--		<zipgroupfileset dir="${lib}" includes="*.jar"/>-->
 		<fileset dir="${cwd}">
+<!--			<exclude name="**/lib/**"/>-->
 			<exclude name="**/${ProjectName}.jar"/>
+			<exclude name="**/${ProjectName}/**"/>
 			<exclude name="**/build/**"/>
 			<exclude name="**/.git/**"/>
 		</fileset>
