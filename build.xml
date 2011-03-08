@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--*******************************License(s)***********************************
+<?xml version="1.0"?><!--**********License(s)***********************************
 Copyright © 2010, 2011 Roy Pfund.                           All rights reserved.
 Use of this source code is governed by a  BSD-style License(the "License")  that
 can be found in the LICENSE file. You should have received a copy of the License
@@ -7,7 +6,6 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
     http://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
 ******************************PROGRAM DESCRIPTION*******************************
 "ant" build file for distributable Java Jar executable  by: Roy Pfund        -->
-
 <project name="TextEditor" default="Package" basedir=".">
 <!-- variables -->
 	<property name="ProjectName" value="TextEditor"/>
@@ -49,6 +47,7 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 			<exclude name="**/.git/**"/>
 		</fileset>
 		<manifest>
+			<attribute name="Created-By" value=""/>
 			<attribute name="Main-Class" value="${ProjectName}.${ProjectName}UI"/>
 			<attribute name="Class-Path" value="${lib}/*.jar"/>
 		</manifest>

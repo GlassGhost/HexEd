@@ -28,7 +28,7 @@ import javax.swing.*;
 import java.util.regex.*;
 import java.lang.*;
 import java.net.*;
-import org.apache.tools.*;
+//import org.apache.tools.*;
 //import org.apache.tools.ant.Main.*;
 /*********************************GUI Creation*********************************/
 public class TextEditorUI extends JFrame
@@ -36,7 +36,8 @@ implements ActionListener,
 		javax.swing.event.ChangeListener,
 		java.awt.event.MouseListener {
 JFileChooser chooser = new JFileChooser();
-String CFO = "";//Current File Opened
+private File currentFile = null;
+private String nextLine = null;
 JTextPane mainJTextPane = new JTextPane();
 JScrollPane mainJScrollPane = new JScrollPane(mainJTextPane);
 JMenuBar TEUIJMenuBar = new JMenuBar();
@@ -68,7 +69,7 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 		JMenuItem contentsJMenuItem = new JMenuItem("Contents");
 		JMenuItem aboutJMenuItem = new JMenuItem("About");
 
-org.apache.tools.ant.Main ANTPILE = new org.apache.tools.ant.Main();
+//org.apache.tools.ant.Main ANTPILE = new org.apache.tools.ant.Main();
 
 public TextEditorUI(){
 	this.setTitle("Text Editor");
@@ -77,7 +78,7 @@ public TextEditorUI(){
 	this.setVisible(true);
 //		noWrapPanel.add( mainJTextPane );
 	this.add(mainJScrollPane);
-	mainJTextPane.setFont(new java.awt.Font("Nimbus Mono L", 1, 12));
+	mainJTextPane.setFont(new java.awt.Font("FreeMono", 1, 12));
 	this.setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
 			addmenuitemtomenu(fileJMenu, newJMenuItem, "ctrl N");
@@ -160,11 +161,13 @@ public void actionPerformed( ActionEvent evt ){
 	}
 	else if (evt.getSource() == fullscrnJMenuItem){
 	}
-
+/*/
 	else if (evt.getSource() == antJMenuItem){
-		JOptionPane.showMessageDialog(null, ANTPILE.getAntVersion());
-		//delete ANTPILE; + org.apache.tools.ant.Main.getAntVersion()
-	}
+		JOptionPane.showMessageDialog(null, 
+		//ANTPILE.getAntVersion()
+		"Current version of ANT:\n" + org.apache.tools.ant.Main.getAntVersion()
+		);
+	}/**/
 
 	else if (evt.getSource() == contentsJMenuItem){
 	}
@@ -194,68 +197,68 @@ public void mouseReleased(java.awt.event.MouseEvent evt){
 private void File(String filedialogtypeSTR){
 //filedialog switch for desired filedialog
 	if (filedialogtypeSTR.contentEquals("New")){
-		CFO = "";mainJTextPane.setText("");
+		currentFile = null;mainJTextPane.setText("");
 	}
 	else if (chooser.showDialog(null, filedialogtypeSTR) == JFileChooser.APPROVE_OPTION){
-	File chosenFile = chooser.getSelectedFile();
-	CFO = chosenFile.toString();
+	currentFile = chooser.getSelectedFile();
+//	CFO = currentFile.toString();
 		if (filedialogtypeSTR.contentEquals("Open")){//user picked open file
 			try {
-				BufferedReader in = new BufferedReader (new FileReader(chosenFile));
-				mainJTextPane.setText("");
-				String nextLine = in.readLine();
-				while (nextLine != null){
-					mainJTextPane.setText(mainJTextPane.getText() + nextLine + "\n");
-					nextLine = in.readLine();
-			}
+			BufferedReader in = new BufferedReader (new FileReader(currentFile));
+			nextLine = null;
+			String crrntstr = null;
+			if ((nextLine = in.readLine()) != null) crrntstr = nextLine;
+			while ((nextLine = in.readLine()) != null){
+				crrntstr = crrntstr + "\n" + nextLine;
+			}mainJTextPane.setText(crrntstr);
 			in.close();
 			} catch (IOException e){
-			JOptionPane.showMessageDialog(null, "Could not load the file " + e.getMessage());
-			}
+			JOptionPane.showMessageDialog(null, "Could not load the file " + e.getMessage());mainJTextPane.setText("");
+			}/**/
 		}
 
-		else if (filedialogtypeSTR.contentEquals("Save")){// user picked save file
+		else if (filedialogtypeSTR.contentEquals("Save")){//user picked save file
 			try {
-				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
+				PrintWriter out = new PrintWriter (new FileWriter(currentFile));
 				out.print (mainJTextPane.getText());
 				out.close();
 			} catch (IOException e){
 				JOptionPane.showMessageDialog(null, "Could not save the file " + e.getMessage());
-			}
+			}/**/
 		}
 
-		else if (filedialogtypeSTR.contentEquals("Save As")){
+		else if (filedialogtypeSTR.contentEquals("Save As")){//
 			try {
-				PrintWriter out = new PrintWriter (new FileWriter(chosenFile));
-				out.print (mainJTextPane.getText());
+				PrintWriter out = new PrintWriter (new FileWriter(currentFile));
+				out.print(mainJTextPane.getText());
 				out.close();
 			} catch (IOException e){
 				JOptionPane.showMessageDialog(null, "Could not save the file " + e.getMessage());
-			}
+			}/**/
 		}
 	}
-	this.setTitle(CFO);
-}//_____________________________________________________________________________
+//	this.setTitle(CFO);
+}/*___________________________________________________________________________*/
 
 private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance){
 	parentmenu.add(MenuItemInstance);
 //	MenuItemInstance.addMouseListener(this);
 	MenuItemInstance.addActionListener(this);
-}//_____________________________________________________________________________
+}/*___________________________________________________________________________*/
 private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, String keymnemonic){
 	parentmenu.add(MenuItemInstance);
 //	MenuItemInstance.addMouseListener(this);
 	MenuItemInstance.addActionListener(this);
 	MenuItemInstance.setAccelerator(KeyStroke.getKeyStroke(keymnemonic));
-}//_____________________________________________________________________________
+}/*___________________________________________________________________________*/
 
 public static void main(String args[]){
-	try {//Set native look and feel
+	{try {//Set native look and feel
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	} catch (InstantiationException e){
 	} catch (ClassNotFoundException e){
 	} catch (UnsupportedLookAndFeelException e){
 	} catch (IllegalAccessException e){
-	}//__________________________________
+	}}//__________________________________
 	new TextEditorUI();
 }}//___________________________________________________________end TextEditor UI
