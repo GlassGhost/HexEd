@@ -20,7 +20,7 @@ Depending on user input may edit or save text files.
 (2009-Aug-15)-v0.01-File created
 (2011-Mar-8 )-v0.05-"New", "Open", "Save", "Save As", "Quit", "Text-Wrap" work.
 **********************************Package Name*********************************/
-package TextEditor;
+package HexEd;
 /********************************System Headers********************************/
 import java.io.*;
 import java.util.regex.*;
@@ -43,7 +43,7 @@ import java.awt.BorderLayout;
 //import org.apache.tools.*;
 //import org.apache.tools.ant.Main.*;
 /*********************************GUI Creation*********************************/
-public class TextEditorUI extends JFrame
+public class HexEdUI extends JFrame
 implements ActionListener,
 		javax.swing.event.ChangeListener,
 		DropTargetListener {
@@ -87,8 +87,8 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 private DropTarget dt = new DropTarget(this, this);
 
 //org.apache.tools.ant.Main ANTPILE = new org.apache.tools.ant.Main();
-public TextEditorUI(){
-	setTitle("Text Editor");
+public HexEdUI(){
+	setTitle("HextEd");
 	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	add(mainJScrollPane, BorderLayout.CENTER);
 	statusPane.add(caretpositionJLabel);
@@ -323,8 +323,8 @@ private void FileMenu(String filedialogtypeSTR){//switch for desired filedialog
 			StringToFile(mainJTextPane.getText(), currentFile);
 		}
 	}
-	if(currentFile == null){this.setTitle("Text Editor");}
-	else {this.setTitle("Text Editor - " + currentFile.getName() );}
+	if(currentFile == null){this.setTitle("HexEd");}
+	else {this.setTitle("HexEd - " + currentFile.getName() );}
 }/*___________________________________________________________________________*/
 
 private String FileToString(File theFile){ try {
@@ -370,5 +370,5 @@ public static void main(String args[]){
 	} catch (UnsupportedLookAndFeelException e){
 	} catch (IllegalAccessException e){
 	}
-	new TextEditorUI();
-}}//___________________________________________________________end TextEditor UI
+	new HexEdUI();
+}}//________________________________________________________________end HexEd UI
