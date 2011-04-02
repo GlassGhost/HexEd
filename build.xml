@@ -1,4 +1,5 @@
-<?xml version="1.0"?><!--**********License(s)***********************************
+<?xml version="1.0" encoding="UTF-8"?>
+<!--*******************************License(s)***********************************
 Copyright © 2010, 2011 Roy Pfund.                           All rights reserved.
 Use of this source code is governed by a  BSD-style License(the "License")  that
 can be found in the LICENSE file. You should have received a copy of the License
@@ -6,9 +7,8 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
     http://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
 ******************************PROGRAM DESCRIPTION*******************************
 "ant" build file for distributable Java Jar executable  by: Roy Pfund        -->
-<project name="TextEditor" default="Package" basedir=".">
+<project name="TextEditor" default="package" basedir=".">
 <!-- variables -->
-	<property name="ProjectName" value="TextEditor"/>
 	<property name="cwd" value="./"/>
 	<property name="src" value="./src"/>
 	<property name="rsrc" value="./rsrc"/>
@@ -22,7 +22,7 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 		<fileset dir="${lib}" includes="*.jar"/>
 	</path>
 
-<target name="Compile"
+<target name="compile"
       description="Compile all Java source files into class files in build dir">
 	<mkdir dir="${build}"/><!--make the directory if it does not already exist.-->
 	<javac srcdir="${src}"
@@ -34,27 +34,30 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 	</javac>
 </target>
 
-<target name="Package"
-        depends="Compile"
+<target name="package"
+        depends="compile"
         description="builds the jar executable, and makes the manifest file" >
-	<jar destfile="${cwd}/${ProjectName}.jar" basedir="${build}">
+	<jar destfile="${cwd}/${ant.project.name}.jar" basedir="${build}">
 <!--		<zipgroupfileset dir="${lib}" includes="*.jar"/>-->
 		<fileset dir="${cwd}">
 <!--			<exclude name="**/lib/**"/>-->
-			<exclude name="**/${ProjectName}.jar"/>
-			<exclude name="**/${ProjectName}/**"/>
+<!--			<exclude name="**/src/**"/>-->
+<!--			<exclude name="**/build.xml"/>-->
+			<exclude name="**/${ant.project.name}.jar"/>
+			<exclude name="**/${ant.project.name}/**"/>
 			<exclude name="**/build/**"/>
 			<exclude name="**/.git/**"/>
 		</fileset>
 		<manifest>
 			<attribute name="Created-By" value=""/>
-			<attribute name="Main-Class" value="${ProjectName}.${ProjectName}UI"/>
+			<attribute name="Main-Class" value="${ant.project.name}.${ant.project.name}UI"/>
 			<attribute name="Class-Path" value="${lib}/*.jar"/>
 		</manifest>
 	</jar>
+	<chmod file="${cwd}/${ant.project.name}.jar" perm="700"/>
 </target>
 
-<target name="Clean" description="Deletes previous build">
+<target name="clean" description="Deletes previous build">
 	<delete verbose="true">
 		<fileset dir="${build}"/>
 	</delete>

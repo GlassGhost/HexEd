@@ -9,7 +9,7 @@ are permitted provided that the following conditions are met:
    this list of conditions and the following  disclaimer  in  the  documentation
    and/or other materials provided with the distribution.
 3. A̶l̶l̶ ̶a̶d̶v̶e̶r̶t̶i̶s̶i̶n̶g̶ ̶m̶a̶t̶e̶r̶i̶a̶l̶s̶ ̶m̶e̶n̶t̶i̶o̶n̶i̶n̶g̶ ̶f̶e̶a̶t̶u̶r̶e̶s̶ ̶ ̶o̶r̶ ̶ ̶u̶s̶e̶ ̶o̶f̶ ̶t̶h̶i̶s̶ ̶s̶o̶f̶t̶w̶a̶r̶e̶ ̶ ̶m̶u̶s̶t̶
-   d̶i̶s̶p̶l̶a̶y̶ ̶t̶h̶e̶ ̶f̶o̶l̶l̶o̶w̶i̶n̶g̶ ̶a̶c̶k̶n̶o̶w̶l̶e̶d̶g̶e̶m̶e̶n̶t̶:
+   d̶i̶s̶p̶l̶a̶y̶ ̶t̶h̶e̶ ̶f̶o̶l̶l̶o̶w̶i̶n̶g̶ ̶a̶c̶k̶n̶o̶w̶l̶e̶d̶g̶e̶m̶e̶n̶t̶:̶
 T̶h̶i̶s̶ ̶p̶r̶o̶d̶u̶c̶t̶ ̶i̶n̶c̶l̶u̶d̶e̶s̶ ̶s̶o̶f̶t̶w̶a̶r̶e̶ ̶ ̶d̶e̶v̶e̶l̶o̶p̶e̶d̶ ̶b̶y̶ ̶ ̶i̶t̶s̶ ̶c̶o̶n̶t̶r̶i̶b̶u̶t̶o̶r̶(̶s̶)̶ ̶a̶n̶d̶ ̶ ̶R̶o̶y̶ ̶P̶f̶u̶n̶d̶.̶
 4. Neither the name of the Copyright Holder(s) nor the names of its contributors
    may be used to endorse or promote products derived from this software without
