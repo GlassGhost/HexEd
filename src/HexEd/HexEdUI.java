@@ -1,9 +1,9 @@
 /**********************************License(s)***********************************
 Copyright © 2009, 2010, 2011 Roy Pfund.                     All rights reserved.
-Use of this source code is governed by a  BSD-style License(the "License")  that
-can be found in the LICENSE file. You should have received a copy of the License
-along with this distribution.  If not,  You may obtain a copy of the License  at
-    http://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
+You may not use this file except in compliance with the  License(the  "License")
+that can be found in the LICENSE file. If you did not  receive  a  copy  of  the
+License along with this distribution,  you may obtain a copy of the  License  at
+    http://github.com/GlassGhost/HexEd/raw/master/LICENSE.txt
 *************************************Inputs*************************************
 none
 *********************************Pre-Conditions*********************************
@@ -78,7 +78,7 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 		findAnReplaceJMenuItem = new JMenuItem("Find & Replace");
 	JMenu viewJMenu = new JMenu("View");
 		JMenuItem fullscrnJMenuItem = new JMenuItem("Full Screen");
-		JCheckBoxMenuItem TextWrapCheckBox = new JCheckBoxMenuItem("Word-Wrap", false);
+		JCheckBoxMenuItem TextWrapCheckBox = new JCheckBoxMenuItem("Word-Wrap", true);
 	JMenu toolsJMenu = new JMenu("Tools");
 		JMenuItem antJMenuItem = new JMenuItem("Run Apache Ant");
 	JMenu helpJMenu = new JMenu("Help");
@@ -88,13 +88,13 @@ private DropTarget dt = new DropTarget(this, this);
 
 //org.apache.tools.ant.Main ANTPILE = new org.apache.tools.ant.Main();
 public HexEdUI(){
-	setTitle("HextEd");
+	setTitle("HexEd");
 	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	add(mainJScrollPane, BorderLayout.CENTER);
 	statusPane.add(caretpositionJLabel);
 	add(statusPane, BorderLayout.SOUTH);
 	//mainJTextPane.setTabSize(4);
-	mainJTextPane.setFont(new java.awt.Font("FreeMono", 1, 12));
+	mainJTextPane.setFont(new java.awt.Font("Droid Sans Mono", 1, 10));
 	setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
 			addmenuitemtomenu(fileJMenu, newJMenuItem, "ctrl N");
@@ -121,6 +121,7 @@ public HexEdUI(){
 		TEUIJMenuBar.add(viewJMenu);
 			viewJMenu.add(TextWrapCheckBox);
 			TextWrapCheckBox.addChangeListener(this);
+			TextWrapCheckBox.setState(false);
 			addmenuitemtomenu(viewJMenu, fullscrnJMenuItem, "F11");
 		TEUIJMenuBar.add(toolsJMenu);
 			addmenuitemtomenu(toolsJMenu, antJMenuItem, "F5");
@@ -192,6 +193,13 @@ private class ToggleWrapTextPane extends JTextPane implements CaretListener{
 				caretpositionJLabel.setText("Selected: " + "Ln " + LineNum + ", Col" + ColumnNum + " to " + "Ln " + getLineNumber(selection) + ", Col" + getColumnNumber(selection));
 			}else {
 				caretpositionJLabel.setText("Selected: " + "Ln " + getLineNumber(selection) + ", Col" + getColumnNumber(selection) + " to " + "Ln " + LineNum + ", Col" + ColumnNum);
+			}
+			if (LineWrap == false){
+				if (this.getWidth() >= mainJScrollPane.getWidth()){
+					this.setScrollableTracksViewportWidth(false);
+				}else {
+					this.setScrollableTracksViewportWidth(true);
+				}
 			}
 			//  Attempt to scroll the viewport to make sure Caret is visible
 			Rectangle r = this.modelToView(caretpos);

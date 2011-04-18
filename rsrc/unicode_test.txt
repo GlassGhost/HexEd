@@ -13,6 +13,12 @@
 ♠&spades; ♣&clubs; ♥&hearts; ♦&diams;
 ⅛&frac18; ¼&frac14; ⅜&frac38; ½&frac12; ⅝&frac58; ¾&frac34; ⅞&frac78; ⅟&frac1;
 ⅙&frac16; ⅓&frac13; ⅔&frac23; ⅚&frac56; ⅕&frac15; ⅖&frac25; ⅗&frac35; ⅘&frac45;
+♩%note14; ♪&note18; ♫&2note18; ♬&2note116; ♭&flat; ♮&natural; ♯&sharp;
+↖&ularr; ↑&uarr; ↗&urarr;
+←&larr;  ↔&harr; →&rarr; ↕&varr;
+↙&dlarr; ↓&darr; ↘&drarr;
+↚&!larr; ↮&!harr; ↛&!rarr;
+
 "&quot; '&apos; &&amp; <&lt; >&gt;
 
 ¬&not; ∧&and; ⊼&nand; ∨&or; ⊽&nor; ⊻&xor;
@@ -20,16 +26,23 @@
 ≤&<=; ≥&>=; ≮&!<; ≯&!>; ≰&!<=; ≱&!>=; ≪&<<; ≫&>>; ≠&!=; ≡&==; ≢&!==;
 ≅&~=; ≆&~!=; ≇&!~=; ≈&~~; ≉&!~~;
 
+⏞&u{; ⏟&d{;
+
 ∪&u; ∩&n; ⊊&c!=; ⊋&)!=; ⊆&c=; ⊇&)=; ⊈&!c=; ⊉&!)=; ⊂&c; ⊄&!c; ⊃&); ⊅&!);
 ∈&e; ∉&!e; ∌&!3; ∋&3; ∅&!o; ∃&E; ∄&!E; ∀&A; ∴&there4; ∵&beca; ∁&complement;
-
-§&S; ¶&P; №&#; †&dag; ‡&ddag; °&deg; ¿&iquest; ⟳&cw; ⟲&ccw; ¢&cent;
-£&pound; €&euro; ¥&yen; ©&copy; ®&reg; ℗&phonorecord; ™&tm; ℠&sm;
-
+⊤&true; ⊥&false; ⟙&TRUE; ⟘&FALSE;
+⋯&cdots; …&ldots; ⋮&vdots; ⋱&ddots; ⋰&rddots;
 ℂ&complex; ℕ&natural; ℙ&prob; ℚ&rational; ℝ&real; ℤ&int;
 
-⋅&.; ⋆&star; ∗&*; ★&bstar; ⚡&bolt; ⊤&true; ⊥&false;
-⋯&cdots; …&ldots; ⋮&vdots; ⋱&ddots; ⋰&rddots;
+§&S; ¶&P; ⋅&.; ⏎&return; †&dag; ‡&ddag;
+°&deg; ⌘&; ¿&iquest; ⟳&cw; ⟲&ccw; ↷&shiftr; ↶&shiftl;
+©&copy; ®&reg; ℗&phonorecord; ™&tm; ℠&sm; №&#;
+¢&cent; €&euro; £&pound; ¥&yen;
+
+⚠&warning; ☠&poison; ⚡&bolt; ☢&radioactive; ☣&biohazard;
+⚖&law; ♿&handicap;
+⋆&star; ∗&*; ★&bstar; ⚛&atom;
+
 
 ♚&bking; ♛&bqueen; ♝&bbishop; ♞&wknight; ♜&brook; ♟&bpawn;
 ♔&wking; ♕&wqueen; ♗&wbishop; ♘&bknight; ♖&wrook; ♙&wpawn;
@@ -38,11 +51,6 @@
 ┌&ulcorner; ┬&umcorner; ┐&urcorner; ╭&ulcurve; ╮&urcurve;
 ├&mlcorner; ┼&mmcorner; ┤&mrcorner; │&vert;    ─&horiz;
 └&llcorner; ┴&lmcorner; ┘&lrcorner; ╰&llcurve; ╯lrcurve;
-
-↖&^\; ↑&uarr; ↗&^/;
-←&larr; ↔&harr; →&rarr; ↕&varr;
-↙&v&; ↓&darr; ↘&v\;
-↚&!<-; ↮&!<->; ↛&!->;
 
 ⇖&^\\;      ⇑&^||;     ⇗&^//;
 ⇐&<--; ⇔&<-->; ⇕&^||v; ⇒&-->;

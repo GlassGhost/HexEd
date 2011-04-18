@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--*******************************License(s)***********************************
 Copyright © 2010, 2011 Roy Pfund.                           All rights reserved.
-Use of this source code is governed by a  BSD-style License(the "License")  that
-can be found in the LICENSE file. You should have received a copy of the License
-along with this distribution.  If not,  You may obtain a copy of the License  at
-    http://github.com/GlassGhost/Text-Editor/raw/master/LICENSE.txt
+You may not use this file except in compliance with the  License(the  "License")
+that can be found in the LICENSE file. If you did not  receive  a  copy  of  the
+License along with this distribution,  you may obtain a copy of the  License  at
+    http://github.com/GlassGhost/HexEd/raw/master/LICENSE.txt
 ******************************PROGRAM DESCRIPTION*******************************
 "ant" build file for distributable Java Jar executable  by: Roy Pfund        -->
 <project name="HexEd" default="package" basedir=".">
@@ -44,7 +44,7 @@ along with this distribution.  If not,  You may obtain a copy of the License  at
 <!--			<exclude name="**/src/**"/>-->
 <!--			<exclude name="**/build.xml"/>-->
 			<exclude name="**/${ant.project.name}.jar"/>
-			<exclude name="**/${ant.project.name}/**"/>
+			<exclude name="${cwd}/${ant.project.name}/**"/>
 			<exclude name="**/build/**"/>
 			<exclude name="**/.git/**"/>
 		</fileset>
