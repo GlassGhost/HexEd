@@ -54,7 +54,7 @@ License along with this distribution,  you may obtain a copy of the  License  at
 			<attribute name="Class-Path" value="${lib}/*.jar"/>
 		</manifest>
 	</jar>
-	<chmod file="${cwd}/${ant.project.name}.jar" perm="700"/>
+	<chmod file="${cwd}/${ant.project.name}.jar" perm="755"/>
 </target>
 
 <target name="clean" description="Deletes previous build">

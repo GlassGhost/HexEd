@@ -5,7 +5,7 @@ that can be found in the LICENSE file. If you did not  receive  a  copy  of  the
 License along with this distribution,  you may obtain a copy of the  License  at
     http://github.com/GlassGhost/HexEd/raw/master/LICENSE.txt
 *************************************Inputs*************************************
-none
+user input
 *********************************Pre-Conditions*********************************
 none
 ******************************PROGRAM DESCRIPTION*******************************
@@ -23,8 +23,10 @@ Depending on user input may edit or save text files.
 package HexEd;
 /********************************System Headers********************************/
 import java.io.*;
+import java.util.*;
 import java.util.regex.*;
 import java.util.HashMap;
+import java.util.EventObject;
 import java.lang.*;
 
 import java.net.*;
@@ -34,6 +36,7 @@ import javax.swing.text.*;
 import javax.swing.event.*;
 import javax.swing.undo.*;
 
+import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.dnd.*;
 import java.awt.datatransfer.*;
@@ -46,12 +49,11 @@ import java.awt.BorderLayout;
 public class HexEdUI extends JFrame
 implements ActionListener,
 		javax.swing.event.ChangeListener,
-		DropTargetListener {
+		DropTargetListener,
+		CaretInfoListener {
 private JFileChooser chooser = new JFileChooser();
 private File currentFile = null;
-private ToggleWrapTextPane mainJTextPane = new ToggleWrapTextPane();
-private int LineNum = 1, ColumnNum = 1;
-private int visiblePixels = 16;
+private ToggleWrapJTextPane mainJTextPane = new ToggleWrapJTextPane();
 private int tabLength = 4;
 private JScrollPane mainJScrollPane = new JScrollPane(mainJTextPane);
 private JPanel statusPane = new JPanel(new GridLayout(1, 1));
@@ -78,7 +80,7 @@ JMenuBar TEUIJMenuBar = new JMenuBar();
 		findAnReplaceJMenuItem = new JMenuItem("Find & Replace");
 	JMenu viewJMenu = new JMenu("View");
 		JMenuItem fullscrnJMenuItem = new JMenuItem("Full Screen");
-		JCheckBoxMenuItem TextWrapCheckBox = new JCheckBoxMenuItem("Word-Wrap", true);
+		JCheckBoxMenuItem TextWrapCheckBox = new JCheckBoxMenuItem("Word-Wrap", false);
 	JMenu toolsJMenu = new JMenu("Tools");
 		JMenuItem antJMenuItem = new JMenuItem("Run Apache Ant");
 	JMenu helpJMenu = new JMenu("Help");
@@ -94,7 +96,13 @@ public HexEdUI(){
 	statusPane.add(caretpositionJLabel);
 	add(statusPane, BorderLayout.SOUTH);
 	//mainJTextPane.setTabSize(4);
-	mainJTextPane.setFont(new java.awt.Font("Droid Sans Mono", 1, 10));
+	Document doc = mainJTextPane.getDocument();
+	if (doc instanceof PlainDocument) {
+		doc.putProperty(PlainDocument.tabSizeAttribute, 4);
+		mainJTextPane.setDocument(doc);
+	}
+	mainJTextPane.setFont(new java.awt.Font("Courier", 1, 12));
+	mainJTextPane.addCaretInfoListener(this);
 	setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
 			addmenuitemtomenu(fileJMenu, newJMenuItem, "ctrl N");
@@ -132,100 +140,7 @@ public HexEdUI(){
 			addmenuitemtomenu(helpJMenu, aboutJMenuItem);
 	this.pack();	this.setSize(640, 450);
 	this.setVisible(true);
-}
-
-private class ToggleWrapTextPane extends JTextPane implements CaretListener{
-	private boolean TracksViewportWidth = true, TracksViewportHeight = true,
-					LineWrap = true;
-	public boolean getScrollableTracksViewportWidth(){
-		return TracksViewportWidth;
-	}
-	public boolean getScrollableTracksViewportHeight(){
-		return TracksViewportWidth;
-	}
-	public void setScrollableTracksViewportWidth(boolean xBool){
-		if (TracksViewportWidth != xBool){
-			TracksViewportWidth = xBool;
-			this.revalidate();
-		}
-	}
-	public void setScrollableTracksViewportHeight(boolean xBool){
-		if (TracksViewportHeight != xBool){
-			TracksViewportHeight = xBool;
-			this.revalidate();
-		}
-	}
-	public boolean getLineWrap(){
-		return LineWrap;
-	}
-	public void setLineWrap(boolean wrap){
-		if (LineWrap != wrap){
-			LineWrap = wrap;
-			setScrollableTracksViewportWidth(wrap);
-		}
-	}
-	public void setTabSize(int size){
-		int tabWidth = size * this.getFontMetrics(this.getFont()).charWidth('w');
-		TabStop[] tabs = new TabStop[10];
-		for (int j = 0; j < tabs.length; j++){
-			tabs[j] = new TabStop( (j+1) * tabWidth );
-		}
-		TabSet tabSet = new TabSet(tabs);
-		SimpleAttributeSet attributes = new SimpleAttributeSet();
-		StyleConstants.setTabSet(attributes, tabSet);
-		int length = this.getDocument().getLength();
-		this.getStyledDocument().setParagraphAttributes(0, length, attributes, true);
-	}
-	public ToggleWrapTextPane(){
-		super();
-		super.addCaretListener(this);
-	}
-	//	Implement CaretListener interface
-	public void caretUpdate(final CaretEvent evt){
-		try {
-			int caretpos = evt.getDot();
-			int selection = evt.getMark();
-			LineNum = getLineNumber(caretpos);
-			ColumnNum = getColumnNumber(caretpos);
-			if (caretpos == selection){// no selection
-				caretpositionJLabel.setText("Ln " + LineNum + ", Col" + ColumnNum);
-			}else if (caretpos < selection){
-				caretpositionJLabel.setText("Selected: " + "Ln " + LineNum + ", Col" + ColumnNum + " to " + "Ln " + getLineNumber(selection) + ", Col" + getColumnNumber(selection));
-			}else {
-				caretpositionJLabel.setText("Selected: " + "Ln " + getLineNumber(selection) + ", Col" + getColumnNumber(selection) + " to " + "Ln " + LineNum + ", Col" + ColumnNum);
-			}
-			if (LineWrap == false){
-				if (this.getWidth() >= mainJScrollPane.getWidth()){
-					this.setScrollableTracksViewportWidth(false);
-				}else {
-					this.setScrollableTracksViewportWidth(true);
-				}
-			}
-			//  Attempt to scroll the viewport to make sure Caret is visible
-			Rectangle r = this.modelToView(caretpos);
-			r.x += visiblePixels;
-			this.scrollRectToVisible(r);
-		}
-		catch(Exception e) {}
-	}
-    public int getLineNumber(int pos) {
-        int Line = (pos==0) ? 1 : 0;
-        try {
-            int offs=pos;
-            while( offs>0) {
-                offs=Utilities.getRowStart(this, offs)-1;
-                Line++;
-            }
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-        return Line;
-    }
-    public int getColumnNumber(int pos) {
-        try { return pos-Utilities.getRowStart(this, pos)+1;
-        } catch (BadLocationException e) { e.printStackTrace();
-        } return -1;
-    }
+	mainJTextPane.setLineWrap(TextWrapCheckBox.getState());
 }
 
 /********************************Event Handling********************************/
@@ -270,11 +185,16 @@ public void actionPerformed( ActionEvent evt ){
 
 	else if (evt.getSource() == contentsJMenuItem){
 	} else if (evt.getSource() == aboutJMenuItem){
+		String AboutText = "a";
+//this.getClass().getClassLoader().getResource("/HexEd/rsrc/About.txt");
+//InputStream is = ;FileToString(
+//this.getClass().getClassLoader().getResourceAsStream("/HexEd/rsrc/About.txt");
+		JOptionPane.showMessageDialog(this, AboutText);
 	}
 }
 public void stateChanged(javax.swing.event.ChangeEvent evt){
 	if (evt.getSource() == TextWrapCheckBox){
-			mainJTextPane.setLineWrap(TextWrapCheckBox.getState());
+		mainJTextPane.setLineWrap(TextWrapCheckBox.getState());
 	}
 }
 
@@ -282,6 +202,17 @@ public void dragEnter(DropTargetDragEvent evt) {}
 public void dragExit(DropTargetEvent evt) {}
 public void dragOver(DropTargetDragEvent evt) {}
 public void dropActionChanged(DropTargetDragEvent evt) {}
+@Override public void CaretInfoUpdate() {
+	Dimension[] CaretInfo = mainJTextPane.getCaretInfo();
+	if (CaretInfo[0] == CaretInfo[1]){// no selection
+		caretpositionJLabel.setText("Ln " + CaretInfo[0].height + ", Col" + CaretInfo[0].width);
+	}else {
+		caretpositionJLabel.setText("Selected: " + "Ln " +
+		CaretInfo[0].height + ", Col" + CaretInfo[0].width
+		+ " to " + "Ln " + CaretInfo[1].height + ", Col" + CaretInfo[1].width);
+	}
+}
+
 public void drop(DropTargetDropEvent evt) {	try {
 	Transferable tr = evt.getTransferable();
 	DataFlavor[] flavors = tr.getTransferDataFlavors();
@@ -316,7 +247,8 @@ public void drop(DropTargetDropEvent evt) {	try {
 }}/*__________________________________________________________________________*/
 /**********************************Functions***********************************/
 
-private void FileMenu(String filedialogtypeSTR){//switch for desired filedialog
+/*! switch for desired filedialog
+*/private void FileMenu(String filedialogtypeSTR){
 	if (filedialogtypeSTR.contentEquals("New")){
 		currentFile = null;mainJTextPane.setText("");
 	} else if (filedialogtypeSTR.contentEquals("Save")){
@@ -335,7 +267,8 @@ private void FileMenu(String filedialogtypeSTR){//switch for desired filedialog
 	else {this.setTitle("HexEd - " + currentFile.getName() );}
 }/*___________________________________________________________________________*/
 
-private String FileToString(File theFile){ try {
+/*! guess what this function does
+*/private String FileToString(File theFile){ try {
 	BufferedReader in = new BufferedReader (new FileReader(theFile));
 
 	String nextLine = null, crrntstr = null;
@@ -349,7 +282,8 @@ private String FileToString(File theFile){ try {
 	JOptionPane.showMessageDialog(this, "Could not load the file " + e.getMessage()); return "";
 }}/*__________________________________________________________________________*/
 
-private void StringToFile(String theString, File theFile){ try {
+/*! guess what this function does
+*/private void StringToFile(String theString, File theFile){ try {
 	PrintWriter out = new PrintWriter (new FileWriter(theFile));
 	out.print(theString);
 	out.close();
@@ -357,11 +291,13 @@ private void StringToFile(String theString, File theFile){ try {
 	JOptionPane.showMessageDialog(this, "Could not save the file " + e.getMessage());
 }}/*__________________________________________________________________________*/
 
-private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance){
+/*! guess what this function does
+*/private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance){
 	addmenuitemtomenu(parentmenu, MenuItemInstance, null);
 }/*___________________________________________________________________________*/
 
-private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, String keymnemonic){
+/*! guess what this function does
+*/private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, String keymnemonic){
 	parentmenu.add(MenuItemInstance);
 //	MenuItemInstance.addMouseListener(this);
 	MenuItemInstance.addActionListener(this);
@@ -370,7 +306,8 @@ private void addmenuitemtomenu(JMenu parentmenu, JMenuItem MenuItemInstance, Str
 	}
 }/*___________________________________________________________________________*/
 
-public static void main(String args[]){
+/*! guess what this function does
+*/public static void main(String args[]){
 	try {//Set native look and feel
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	} catch (InstantiationException e){

@@ -48,11 +48,11 @@
 ♔&wking; ♕&wqueen; ♗&wbishop; ♘&bknight; ♖&wrook; ♙&wpawn;
 ⛂&bchecker; ⛃&bkchecker; ⛀&wchecker; ⛁&wkchecker;
 
+⇖&uldarr; ⇑&udarr; ⇗&urdarr;
+⇐&ldarr;  ⇔&hdarr; ⇒&rdarr; ⇕&vdarr;
+⇙&dldarr; ⇓&ddarr; ⇘&drdarr;
+⇍&!ldarr; ⇎&!hdarr; ⇏&!rdarr;
+
 ┌&ulcorner; ┬&umcorner; ┐&urcorner; ╭&ulcurve; ╮&urcurve;
 ├&mlcorner; ┼&mmcorner; ┤&mrcorner; │&vert;    ─&horiz;
 └&llcorner; ┴&lmcorner; ┘&lrcorner; ╰&llcurve; ╯lrcurve;
-
-⇖&^\\;      ⇑&^||;     ⇗&^//;
-⇐&<--; ⇔&<-->; ⇕&^||v; ⇒&-->;
-⇙&v//;      ⇓&v||;     ⇘&v\\;
-⇍&!<--; ⇎&!<-->; ⇏&!-->;
