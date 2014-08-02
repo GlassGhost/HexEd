@@ -13,7 +13,7 @@ git clone https://github.com/GlassGhost/HexEd
 cd ./HexEd
 ant
 ```
-Then double click the HexEd.jar file to demo the compiled application
+Then double click the HexEd.jar file to demo the compiled application on ANY platform with a JRE installed(windows, *nix, mac, etc.)
 
 [BSD Licensed]:https://raw.githubusercontent.com/GlassGhost/HexEd/master/LICENSE.txt
 [Java]:https://en.wikipedia.org/wiki/Java_(programming_language)
