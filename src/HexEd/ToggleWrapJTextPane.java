@@ -129,24 +129,24 @@ private boolean TracksViewportWidth = false, TracksViewportHeight = false,
 //		this.getStyledDocument().setParagraphAttributes(0, length, attributes, true);
 //	}
 
-    public int getLineNumber(int pos) {
-        int Line = (pos==0) ? 1 : 0;
-        try {
-            int offs=pos;
-            while( offs>0) {
-                offs=Utilities.getRowStart(this, offs)-1;
-                Line++;
-            }
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-        return Line;
-    }
-    public int getColumnNumber(int pos) {
-        try { return pos-Utilities.getRowStart(this, pos)+1;
-        } catch (BadLocationException e) { e.printStackTrace();
-        } return -1;
-    }
+	public int getLineNumber(int pos) {
+		int Line = (pos==0) ? 1 : 0;
+		try {
+			int offs=pos;
+			while( offs>0) {
+				offs=Utilities.getRowStart(this, offs)-1;
+				Line++;
+			}
+		} catch (BadLocationException e) {
+			e.printStackTrace();
+		}
+		return Line;
+	}
+	public int getColumnNumber(int pos) {
+		try { return pos-Utilities.getRowStart(this, pos)+1;
+		} catch (BadLocationException e) { e.printStackTrace();
+		} return -1;
+	}
 /********************************Event Handling********************************/
 	public void caretUpdate(final CaretEvent evt){//Implement CaretListener interface
 		try {
