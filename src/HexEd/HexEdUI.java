@@ -46,6 +46,7 @@ import java.awt.BorderLayout;
 //import org.apache.tools.*;
 //import org.apache.tools.ant.Main.*;
 /*********************************GUI Creation*********************************/
+//implement added to class
 public class HexEdUI extends JFrame
 implements ActionListener,
 		javax.swing.event.ChangeListener,
@@ -102,6 +103,7 @@ public HexEdUI(){
 		mainJTextPane.setDocument(doc);
 	}
 	mainJTextPane.setFont(new java.awt.Font("Courier", 1, 12));
+//instantiation of a thrower object and use of it's addListener function
 	mainJTextPane.addCaretInfoListener(this);
 	setJMenuBar(TEUIJMenuBar);
 		TEUIJMenuBar.add(fileJMenu);
@@ -202,6 +204,7 @@ public void dragEnter(DropTargetDragEvent evt) {}
 public void dragExit(DropTargetEvent evt) {}
 public void dragOver(DropTargetDragEvent evt) {}
 public void dropActionChanged(DropTargetDragEvent evt) {}
+//an override of 1 events that can caught by this type of catcher
 @Override public void CaretInfoUpdate() {
 	Dimension[] CaretInfo = mainJTextPane.getCaretInfo();
 	if (CaretInfo[0] == CaretInfo[1]){// no selection

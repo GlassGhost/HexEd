@@ -22,6 +22,7 @@ cursor/selection info events.
 package HexEd;
 /********************************System Headers********************************/
 import java.io.*;
+//import of java.util.event
 import java.util.*;
 //import java.util.regex.*;
 //import java.util.HashMap;
@@ -49,6 +50,7 @@ interface CaretInfoListener {
 
 public class ToggleWrapJTextPane extends JTextPane implements Scrollable, CaretListener{
 /**********************************Variables***********************************/
+//a list of catchers
 List<CaretInfoListener> listeners = new ArrayList<CaretInfoListener>();
 private int visiblePixels = 16;
 private Dimension[] CaretInfo = new Dimension[2];
@@ -61,6 +63,7 @@ private boolean TracksViewportWidth = false, TracksViewportHeight = false,
 		this.setLineWrap(this.getLineWrap());
 		this.revalidate();
 	}
+//a way to add someone to the list of catchers
 	public void addCaretInfoListener(CaretInfoListener toAdd) {
 		listeners.add(toAdd);
 	}
@@ -160,6 +163,7 @@ private boolean TracksViewportWidth = false, TracksViewportHeight = false,
 				CaretInfo[0]=new Dimension(getColumnNumber(selection), getLineNumber(selection));
 				CaretInfo[1]=new Dimension(getColumnNumber(caretpos), getLineNumber(caretpos));
 			}
+			//1 or more times, a Notification that an event happened is thrown.
 			for (CaretInfoListener hl : listeners) hl.CaretInfoUpdate();
 			//  Attempt to scroll the viewport to make sure Caret is visible
 			Rectangle r = this.modelToView(caretpos);
